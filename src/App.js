@@ -6,15 +6,15 @@ import ResetPassword from "./pages/ResetPassword";
 import store from "./Redux/Store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PrivateRoutes from "./PrivateRoutes";
+import PrivateRoutes from "./Utility/PrivateRoutes";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
-          <Route element={<PrivateRoutes/>}>
-          <Route exact path="/" element={<Home />} />
+          <Route element={<PrivateRoutes />}>
+            <Route exact path="/" element={<Home />} />
           </Route>
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/login" element={<Login />} />

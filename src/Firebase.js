@@ -59,13 +59,12 @@ export const signInwithGoogle = async () => {
     return {
       username: result.user.displayName,
       photoURL: result.user.photoURL,
-      status: "success"
+      status: "success",
     };
     //  console.log(user);
   } catch (error) {
     //  console.log(error)
   }
-
 };
 
 //Google Auth
@@ -75,29 +74,25 @@ export const signInwithFacebook = async () => {
     return {
       username: result.user.displayName,
       photoURL: result.user.photoURL,
-      status: "success"
+      status: "success",
     };
     //  console.log(user);
   } catch (error) {
     //  console.log(error)
   }
-
 };
-
 
 //Google Auth
 export const signInwithGithub = async () => {
   try {
     const result = await signInWithPopup(auth, providerGithub);
     return {
-      
       username: result.user.displayName,
       photoURL: result.user.photoURL,
-      status: "success"
+      status: "success",
     };
     //  console.log(user);
   } catch (error) {
     //  console.log(error)
   }
 };
-

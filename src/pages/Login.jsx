@@ -2,8 +2,7 @@ import { React, useState } from "react";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { BsFacebook, BsGoogle, BsGithub } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import { User_info , setToken} from "../Redux/info/InfoActions";
-
+import { User_info, setToken } from "../Redux/info/InfoActions";
 
 // Firebase
 import {
@@ -16,7 +15,7 @@ import {
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Redux
 import { useDispatch } from "react-redux";
-import { login} from "../Redux/info/InfoActions";
+import { login } from "../Redux/info/InfoActions";
 import CrossModal from "../components/CrossModal";
 
 const Login = () => {
@@ -27,7 +26,6 @@ const Login = () => {
   const auth = getAuth();
 
   const dispatch = useDispatch();
-
 
   //Authorization starts
   const Login = async () => {
@@ -40,51 +38,53 @@ const Login = () => {
       if (user) {
         console.log(`Login ${user.email}`);
         console.log("user is logged successfully");
-        dispatch(setToken({status: true}));
+        dispatch(setToken({ status: true }));
         navigate("/");
       } else {
-        dispatch(setToken({status: false}));
+        dispatch(setToken({ status: false }));
         setModal(true);
       }
     });
   };
 
-   const googleAuth =  async () =>{
+  const googleAuth = async () => {
     const result = await signInwithGoogle();
     if (result.status === "success") {
-      dispatch(setToken({status: true}));
-      dispatch(User_info( {username: result.username, photoURL:result.photoURL } ));
-      navigate("/")
+      dispatch(setToken({ status: true }));
+      dispatch(
+        User_info({ username: result.username, photoURL: result.photoURL })
+      );
+      navigate("/");
+    } else {
+      dispatch(setToken({ status: false }));
     }
-    else{
-      dispatch(setToken({status: false}));
-    }
-
-   }
-   const FacebookAuth =  async () =>{
+  };
+  const FacebookAuth = async () => {
     const result = await signInwithFacebook();
     if (result.status === "success") {
-      dispatch(setToken({status: true}));
-      dispatch(User_info({username: result.username, photoURL:result.photoURL}));
-      navigate("/")
+      dispatch(setToken({ status: true }));
+      dispatch(
+        User_info({ username: result.username, photoURL: result.photoURL })
+      );
+      navigate("/");
+    } else {
+      dispatch(setToken({ status: false }));
     }
-    else{
-      dispatch(setToken({status: false}));
-    }
-   }
-   const GithubAuth =  async () =>{
+  };
+  const GithubAuth = async () => {
     const result = await signInwithGithub();
     if (result.status === "success") {
-      dispatch(setToken({status: true}));
-      dispatch(User_info({username: result.username, photoURL:result.photoURL}));
-      navigate("/")
+      dispatch(setToken({ status: true }));
+      dispatch(
+        User_info({ username: result.username, photoURL: result.photoURL })
+      );
+      navigate("/");
+    } else {
+      dispatch(setToken({ status: false }));
     }
-    else{
-      dispatch(setToken({status: false}));
-    }
-   }
+  };
 
-   //Authorization ends
+  //Authorization ends
 
   return (
     <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen flex flex-col py-20 items-center">

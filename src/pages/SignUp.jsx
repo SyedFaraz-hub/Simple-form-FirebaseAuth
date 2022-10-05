@@ -3,9 +3,7 @@ import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 
 // Firebase
-import {
-  registerUser,
-} from "../Firebase";
+import { registerUser } from "../Firebase";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -25,14 +23,14 @@ const SignUp = () => {
     if (result === "unsuccessful") {
       setModal(true);
     } else {
-      setModal(false)
-      navigate("/")
+      setModal(false);
+      navigate("/");
     }
   };
 
   return (
     <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 h-screen flex flex-col py-20 items-center">
-       {modal ? <CrossModal/> : ""}
+      {modal ? <CrossModal /> : ""}
       <div className="flex flex-col justify-around bg-white md:w-[25rem] sm:w-[23rem] w-[21rem] rounded-md py-8 px-10 min-h-[100%]">
         <div className="flex justify-center">
           <h1 className="text-3xl font-bold">Sign up</h1>
@@ -80,7 +78,6 @@ const SignUp = () => {
               <p>Sign up</p>
             </button>
           </div>
-
         </div>
 
         <div className="text-sm flex flex-col items-center space-y-2">
